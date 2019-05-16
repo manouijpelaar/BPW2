@@ -4,6 +4,7 @@ using UnityEngine;
 public class characterController : MonoBehaviour {
 
     public float speed = 10.0f;
+    public float upwards = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +24,10 @@ public class characterController : MonoBehaviour {
 
         if (Input.GetKeyDown("escape"))
             Cursor.lockState = CursorLockMode.None;
+
+        if (Input.GetKey("space"))
+        {
+            this.GetComponent<Rigidbody>().AddForce(Vector3.up * upwards);
+        }
     }
 }
