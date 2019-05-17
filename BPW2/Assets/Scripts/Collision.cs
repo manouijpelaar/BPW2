@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject spawnPoint;
+    public Transform transform;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //transform = player.gameObject.GetComponent<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider col)
+    {   // if player hits the tag
+        if (col.gameObject.tag == "Fail")
+        {
+            Respawn();
+        }
+    }
+
+    // Respawn the player to a determined position
+    void Respawn()
     {
-        
+        this.transform.position = spawnPoint.transform.position;
     }
 }
