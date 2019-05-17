@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ba636595e6746384fa21d0c925634037
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bunbun DEMO
+  fontNames:
+  - Bunbun DEMO
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 45f48958b6ed99c40a6d4ff5ca373fd9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
