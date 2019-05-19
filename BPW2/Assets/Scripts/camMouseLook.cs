@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class camMouseLook : MonoBehaviour {
 
+    // Variables for the looking angle of the player and movement of the camera.
     Vector2 mouseLook;
     Vector2 smoothV;
     public float sensitivity = 4.0f;
@@ -19,6 +20,7 @@ public class camMouseLook : MonoBehaviour {
 
     void Update()
     {
+        // sets the camera's movement equal to the movement of the position of the mouse.
         var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothness, sensitivity * smoothness));
         smoothV.x = Mathf.Lerp(smoothV.x, mouseDelta.x, 1f / smoothness);
