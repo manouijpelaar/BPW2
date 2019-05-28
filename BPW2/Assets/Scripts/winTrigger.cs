@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class winTrigger : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class winTrigger : MonoBehaviour
         if (win.gameObject.tag == "Player")
         {
             win.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
-            //completeLevelScreen.SetActive(true);
+            SceneManager.LoadScene(6);
             Debug.Log("You Win!");
         }
     }

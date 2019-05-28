@@ -8,11 +8,12 @@ public class Collision : MonoBehaviour
     public GameObject player;
     public GameObject spawnPoint;
     public Transform transform;
-
+    public Health life;
+    
     // Start is called before the first frame update
     void Start()
     {
-        //transform = player.gameObject.GetComponent<Transform>();
+        
     }
 
     void OnTriggerEnter(Collider col)
@@ -20,6 +21,7 @@ public class Collision : MonoBehaviour
         if (col.gameObject.tag == "Fail")
         {
             Respawn();
+            life.TakeDamage(1);
         }
     }
 

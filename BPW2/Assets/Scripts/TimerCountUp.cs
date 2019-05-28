@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimerCountUp : MonoBehaviour
 {
+    public Text timerText;
+
     // Variables for making the timer al set to the beginning of 0 and still empty.
     float minutes = 0f;
     float seconds = 0f;
@@ -57,6 +60,23 @@ public class TimerCountUp : MonoBehaviour
             millisecondsS = "" + (int) milliseconds;
         }
 
-        Debug.Log(string.Format("{ 0}:{ 1}:{ 2}", minutesS, secondsS, millisecondsS));
+        timerText.text = (string.Format("{0}:{1}:{2}", minutesS, secondsS, millisecondsS));
+
+        /* https://stackoverflow.com/questions/41641731/time-based-scoring-unity
+        if (minutes > 1)
+        {
+            theScore -= 100
+        }
+        
+        if (seconds > 30)
+        {
+            theScore += 50 
+        }
+
+        if (seconds < 30)
+        {
+            theScore += 150
+        }
+        */
     }
 }

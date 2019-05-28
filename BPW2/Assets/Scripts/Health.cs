@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -11,6 +12,19 @@ public class Health : MonoBehaviour
     public Image[] balloons;
     public Sprite fullBalloon;
     public Sprite emptyBalloon;
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        // when player has no health, level failed
+        if (health == 0 && gameObject.tag == "Player")
+        {
+            gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
+            SceneManager.LoadScene(7);
+            Debug.Log("You Lose!");
+        }
+    }
 
     void Update()
     {
