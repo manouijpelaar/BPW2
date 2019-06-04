@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class characterController : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class characterController : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.levelIndex = SceneManager.GetActiveScene().buildIndex;
         // The cursor will not be visable with CursorLockMode
         Cursor.lockState = CursorLockMode.Locked;
     }

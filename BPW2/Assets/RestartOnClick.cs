@@ -8,7 +8,7 @@ public class RestartOnClick : MonoBehaviour
     public void Restart()
     {
         // loads current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(GameManager.levelIndex);
     }
 
 }
