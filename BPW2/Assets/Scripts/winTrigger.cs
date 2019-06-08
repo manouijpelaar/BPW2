@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class winTrigger : MonoBehaviour
 {
-
     public GameObject player;
     //public GameObject completeLevelScreen;
     //public TargetVolgorde targetManager;

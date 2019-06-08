@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static GameManager manager;
-    public Collision collider;
+    //public Collision collider;
     public static int levelIndex;
 
     void Start()
