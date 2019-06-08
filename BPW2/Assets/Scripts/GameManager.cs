@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(WaitToStart());
         StartCoroutine(MoveOverField());
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().StopMusic();
     }
 
     public static GameManager Manager

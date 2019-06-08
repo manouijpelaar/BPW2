@@ -15,6 +15,7 @@ public class winTrigger : MonoBehaviour
             win.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
             SceneManager.LoadScene(6);
             Debug.Log("You Win!");
+            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
         }
     }
 }

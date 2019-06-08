@@ -7,6 +7,7 @@ public class characterController : MonoBehaviour {
     // Variables for moving speed and upwards speed.
     public float speed = 10.0f;
     public float upwards = 5.0f;
+    public GameObject fire;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,16 @@ public class characterController : MonoBehaviour {
         if (Input.GetKey("space"))
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * upwards);
+        }
+
+        if (Input.GetKeyDown("space"))
+        {
+            this.GetComponentInChildren<ParticleSystem>().Play();
+        }
+
+        if (Input.GetKeyUp("space"))
+        {
+            this.GetComponentInChildren<ParticleSystem>().Stop();
         }
     }
 }
