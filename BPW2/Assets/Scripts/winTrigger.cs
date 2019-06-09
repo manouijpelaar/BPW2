@@ -9,7 +9,7 @@ public class winTrigger : MonoBehaviour
     //public TargetVolgorde targetManager;
 
     void OnTriggerEnter(Collider win)
-    {   // when player collides with winscene, level complete
+    {   // when player collides with winscene, level complete and menu music plays
         if (win.gameObject.tag == "Player")
         {
             win.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;

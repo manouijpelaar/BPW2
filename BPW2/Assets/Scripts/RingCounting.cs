@@ -6,6 +6,7 @@ public class RingCounting : MonoBehaviour
 {
     public AudioSource ringSound;
 
+    // When player collides with rings score is added.
     void OnTriggerEnter(Collider other)
     {
         ringSound.Play();

@@ -6,10 +6,10 @@ public class characterController : MonoBehaviour {
 
     // Variables for moving speed and upwards speed.
     public float speed = 10.0f;
-    public float upwards = 5.0f;
+    public float upwards = 8.0f;
     public GameObject fire;
+    public AudioSource fireSound;
 
-    // Start is called before the first frame update
     void Start()
     {
         GameManager.levelIndex = SceneManager.GetActiveScene().buildIndex;
@@ -17,11 +17,10 @@ public class characterController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Sets vertical and horizontal axis equal to the WASD keys.
-        float UpDown = Input.GetAxis("Vertical") * speed;
+        float UpDown = Input.GetAxis("Vertical") * speed + 3;
         float LeftRight = Input.GetAxis("Horizontal") * speed;
         UpDown *= Time.deltaTime;
         LeftRight *= Time.deltaTime;
@@ -38,9 +37,11 @@ public class characterController : MonoBehaviour {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * upwards);
         }
 
+        // fire in airballoon plays and stops when space button is or was pressed.
         if (Input.GetKeyDown("space"))
         {
             this.GetComponentInChildren<ParticleSystem>().Play();
+            fireSound.Play();
         }
 
         if (Input.GetKeyUp("space"))

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LoadOnClickFailScene : MonoBehaviour
 {
 
-    // Loads scene if application is used (or pressed when set on a button).
+    // Loads scene if application is used (or pressed when set on a button) and menu music plays again.
     public void LoadScene(int level)
     {
         Application.LoadLevel(level);

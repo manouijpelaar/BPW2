@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().StopMusic();
     }
 
+    // Singleton gamemanager for every script.
     public static GameManager Manager
     {
         get

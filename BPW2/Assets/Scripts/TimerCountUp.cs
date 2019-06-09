@@ -62,12 +62,36 @@ public class TimerCountUp : MonoBehaviour
 
         timerText.text = (string.Format("{0}:{1}:{2}", minutesS, secondsS, millisecondsS));
 
-        /* https://stackoverflow.com/questions/41641731/time-based-scoring-unity
+        //Be sure to assign this a value in the designer.
+        /*public Text TimeScoreText;
+
+        private int timer;
+        private int timeScore;
+
+        void Update()
+        {
+
+            timer += Time.deltaTime;
+
+            if (timer > 5f)
+            {
+
+                timeScore += 5;
+
+                //We only need to update the text if the score changed.
+                TimeScoreText.text = timeScore.ToString();
+                TimeScoreText.GetComponent<Text>().text = "Your Score: " + theScore + timeScore;
+
+                //Reset the timer to 0.
+            timer = 0;
+            }
+        }
+        https://stackoverflow.com/questions/41641731/time-based-scoring-unity
         if (minutes > 1)
         {
             theScore -= 100
         }
-        
+
         if (seconds > 30)
         {
             theScore += 50 
