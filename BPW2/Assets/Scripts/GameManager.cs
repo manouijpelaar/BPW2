@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     static GameManager manager;
     //public Collision collider;
     public static int levelIndex;
+    public Text CountDown;
 
     void Start()
     {
-        StartCoroutine(WaitToStart());
-        StartCoroutine(MoveOverField());
+        StartCoroutine(Countdown(3));
         GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().StopMusic();
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enable();
     }
 
     // Singleton gamemanager for every script.
@@ -27,35 +29,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator WaitToStart()
+    IEnumerator Countdown(int seconds)
     {
-        print("we wachten");
+        int count = seconds;
 
-        yield return new WaitForSeconds(3.0f);
+        while (count > 0)
+        {
 
-        print("gewacht");
+            // display something...
+            yield return new WaitForSeconds(1);
+            count--;
+            CountDown.text = count.ToString();
+        }
+
+        // count down is finished...
+        StartGame();
     }
 
-    IEnumerator MoveOverField()
+    void StartGame()
     {
-        float timer = .0f;
-
-        while(timer < .5f)
-        {
-            timer += Time.deltaTime;
-
-            transform.position -= new Vector3(5f * Time.deltaTime, .0f, .0f);
-
-            yield return 0;
-        }
-
-        while (timer < 1.5f)
-        {
-            timer += Time.deltaTime;
-
-            transform.position += new Vector3(5f * Time.deltaTime, .0f, .0f);
-
-            yield return 0;
-        }
+        
     }
 }
