@@ -6,15 +6,21 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     static GameManager manager;
-    //public Collision collider;
+    public GameObject player;
     public static int levelIndex;
     public Text CountDown;
 
     void Start()
     {
         StartCoroutine(Countdown(3));
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().StopMusic();
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enable();
+        GameObject musicObject = GameObject.FindGameObjectWithTag("Music");
+        if (musicObject != null)
+        {
+            musicObject.GetComponent<MusicClass>().StopMusic();
+        }
+        player.GetComponent<Rigidbody>().useGravity = false;
+        player.GetComponent<CharacterController>().enabled = false;
+        
     }
 
     // Singleton gamemanager for every script.
@@ -36,18 +42,21 @@ public class GameManager : MonoBehaviour
         while (count > 0)
         {
 
-            // display something...
+            // Display something...
             yield return new WaitForSeconds(1);
             count--;
             CountDown.text = count.ToString();
         }
 
-        // count down is finished...
+        // Count down is finished...
         StartGame();
     }
 
     void StartGame()
     {
-        
+        player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<Rigidbody>().useGravity = true;
+        CountDown.enabled = false;
+        Manager.GetComponent<TimerCountUp>().enabled = true;
     }
 }

@@ -17,6 +17,6 @@ public class ScoreSystem : MonoBehaviour
     // Counts up the score of the rings.
     void Update()
     {       
-        scoreText.GetComponent<Text>().text = "SCORE: " + theScore;
+        scoreText.text = "SCORE: " + theScore;
     }
 }

@@ -10,97 +10,56 @@ public class TimerCountUp : MonoBehaviour
     // Variables for making the timer al set to the beginning of 0 and still empty.
     float minutes = 0f;
     float seconds = 0f;
-    float milliseconds = 0f;
-    string minutesS = "";
-    string secondsS = "";
-    string millisecondsS = "";
 
+    public bool levelComplete;
+    public bool levelFailed;
+    bool LevelWasCompleted;
+
+    public Text TimeScoreText;
+    private float timer;
+    private int timeScore;
+
+    public int maxTimeScore = 150;
+    public int minTimeScore = 0;
+    public int maxSeconds = 35 ;
+    
     void Update()
     {
-        // counts seconds up if the millisec and sec are to 100 and 59.
-        if (milliseconds >= 100)
+        // Counts seconds up if the millisec and sec are to 100 and 59.
+        minutes = Mathf.Floor(timer / 60);
+        seconds = Mathf.RoundToInt(timer % 60);
+
+        timerText.text = (string.Format("{0:00}.{1:00}", minutes, seconds));
+
+        timer += Time.deltaTime;
+        if (levelComplete == true && LevelWasCompleted == false)
         {
-            if (seconds >= 59)
-            {
-                minutes++;
-                seconds = 0;
-            }
-            else if (seconds < 59)
-            {
-                seconds++;
-            }
-            milliseconds = 0;
+            ShowScoreOnLevelComplete();
+
+            LevelWasCompleted = true;
+        }
+    }
+
+    void ShowScoreOnLevelComplete()
+    {
+        if (seconds < maxSeconds)
+        {
+            timeScore += maxTimeScore;
         }
 
-        milliseconds += Time.deltaTime * 100;
-        if (minutes < 10)
-        {
-            minutesS = "0" + minutes;
-        }
         else
         {
-            minutesS = "" + minutes;
+            timeScore += minTimeScore;
         }
 
-        if (seconds < 10)
+        // We only need to update the text if the score changed.
+        TimeScoreText.text = "Your Score: " + (ScoreSystem.theScore + timeScore);
+        Debug.Log(ScoreSystem.theScore);
+
+        if (levelComplete == true || levelFailed == true)
         {
-            secondsS = "0" + seconds;
-        }
-        else
-        {
-            secondsS = "" + seconds;
-        }
-
-        if ((int)milliseconds < 10)
-        {
-            millisecondsS = "0" + (int) milliseconds;
-        }
-        else
-        {
-            millisecondsS = "" + (int) milliseconds;
-        }
-
-        timerText.text = (string.Format("{0}:{1}:{2}", minutesS, secondsS, millisecondsS));
-
-        //Be sure to assign this a value in the designer.
-        /*public Text TimeScoreText;
-
-        private int timer;
-        private int timeScore;
-
-        void Update()
-        {
-
-            timer += Time.deltaTime;
-
-            if (timer > 5f)
-            {
-
-                timeScore += 5;
-
-                //We only need to update the text if the score changed.
-                TimeScoreText.text = timeScore.ToString();
-                TimeScoreText.GetComponent<Text>().text = "Your Score: " + theScore + timeScore;
-
-                //Reset the timer to 0.
+            // Reset the timer to 0.
             timer = 0;
-            }
         }
-        https://stackoverflow.com/questions/41641731/time-based-scoring-unity
-        if (minutes > 1)
-        {
-            theScore -= 100
-        }
-
-        if (seconds > 30)
-        {
-            theScore += 50 
-        }
-
-        if (seconds < 30)
-        {
-            theScore += 150
-        }
-        */
     }
 }

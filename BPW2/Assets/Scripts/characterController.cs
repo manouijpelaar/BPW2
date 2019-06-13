@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class characterController : MonoBehaviour {
+public class CharacterController : MonoBehaviour {
 
     // Variables for moving speed and upwards speed.
     public float speed = 10.0f;
@@ -27,7 +27,7 @@ public class characterController : MonoBehaviour {
 
         transform.Translate(LeftRight, 0, UpDown);
 
-        // with escape the cursor can be shown again.
+        // With escape the cursor can be shown again.
         if (Input.GetKeyDown("escape"))
             Cursor.lockState = CursorLockMode.None;
 
@@ -37,7 +37,7 @@ public class characterController : MonoBehaviour {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * upwards);
         }
 
-        // fire in airballoon plays and stops when space button is or was pressed.
+        // Fire in airballoon plays and stops when space button is or was pressed.
         if (Input.GetKeyDown("space"))
         {
             this.GetComponentInChildren<ParticleSystem>().Play();

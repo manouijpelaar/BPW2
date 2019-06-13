@@ -17,7 +17,7 @@ public class Collision : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col)
-    {   // if player hits the tag
+    {   // If player hits the tag
         if (col.gameObject.tag == "Fail")
         {
             Respawn();

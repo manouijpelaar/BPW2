@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    // mouse arrow is visible on screen.
+    // Mouse arrow is visible on screen.
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;

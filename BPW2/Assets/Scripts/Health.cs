@@ -13,19 +13,24 @@ public class Health : MonoBehaviour
     public Sprite fullBalloon;
     public Sprite emptyBalloon;
 
+    public GameObject levelFailed;
+
     public void TakeDamage(int amount)
     {
         health -= amount;
 
-        // when player has no health, level failed
+        // When player has no health, level failed
         if (health == 0 && gameObject.tag == "Player")
         {
             gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
-            SceneManager.LoadScene(7);
+            SceneManager.LoadScene(6);
             Debug.Log("You Lose!");
+
+            levelFailed.GetComponent<TimerCountUp>().levelComplete = true;
         }
     }
 
+    // Making a list of the lives and setting at full or empty when takiing damage
     void Update()
     {
         if(health > numOfBalloons)

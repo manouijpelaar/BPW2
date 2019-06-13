@@ -5,17 +5,25 @@ using UnityEngine.UI;
 public class winTrigger : MonoBehaviour
 {
     public GameObject player;
-    //public GameObject completeLevelScreen;
-    //public TargetVolgorde targetManager;
+    public GameObject levelComplete;
+    public GameObject winUI;
 
     void OnTriggerEnter(Collider win)
     {   // when player collides with winscene, level complete and menu music plays
         if (win.gameObject.tag == "Player")
         {
             win.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
-            SceneManager.LoadScene(6);
+            player.GetComponent<CharacterController>().enabled = false;
+            player.GetComponent<AudioSource>().Stop();
+            winUI.SetActive(true);
             Debug.Log("You Win!");
-            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
+            GameObject musicObject = GameObject.FindGameObjectWithTag("Music");
+            if (musicObject != null)
+            {
+                musicObject.GetComponent<MusicClass>().PlayMusic();
+            }
+
+            levelComplete.GetComponent<TimerCountUp>().levelComplete = true;
         }
     }
 }
